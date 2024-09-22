@@ -12,7 +12,12 @@ export default function Home() {
     const handleSubmit = async () => {
         try {
             const jsonData = JSON.parse(input);
-            const res = await axios.post('https://bajaj-api-1-k64o.onrender.com/bfhl', jsonData);
+           const config = {
+            headers: {
+                'Flag': 'true' // Pass flag in headers
+            }
+        };
+            const res = await axios.post('https://bajaj-api-1-k64o.onrender.com/bfhl', jsonData,config);
             setResponse(res.data);
             setError(null);
         } catch (err) {
